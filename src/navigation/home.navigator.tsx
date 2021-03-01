@@ -26,12 +26,12 @@ const initialTabRoute: string = __DEV__ ? 'Components' : 'Layouts';
  */
 const ROOT_ROUTES: string[] = ['Home', 'Layouts', 'Components', 'Themes'];
 
-const isOneOfRootRoutes = (currentRoute: RouteProp<any, any>): boolean => {
-  return ROOT_ROUTES.find(route => currentRoute.name === route) !== undefined;
+const isOneOfRootRoutes = (currentRoute: string): boolean => {
+  return ROOT_ROUTES.find(root_route => currentRoute === root_route) !== undefined;
 };
 
 const TabBarVisibleOnRootScreenOptions = ({ route }): BottomTabNavigationOptions => {
-  const currentRoute = route.state && route.state.routes[route.state.index];
+  const currentRoute: string = route.name;
   return { tabBarVisible: currentRoute && isOneOfRootRoutes(currentRoute) };
 };
 
